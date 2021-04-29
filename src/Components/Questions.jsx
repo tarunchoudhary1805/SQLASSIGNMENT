@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 const Questions = () => {
   const [data, setData] = useState();
   useEffect(async () => {
-    let response = await fetch("https://sqlassignmentapi.herokuapp.com/").then((res) =>
-      res.json()
-    );
+    let response = await fetch(
+      "https://sqlassignmentapi.herokuapp.com/"
+    ).then((res) => res.json());
     setData(response);
   }, []);
   console.log(data);
@@ -33,6 +33,7 @@ const Questions = () => {
           </>
         </div>
       ))}
+      {data?.length != 0 && <button className="btn btn-success " onClick={window.print}>Print</button>}
     </div>
   );
 };
