@@ -13,7 +13,7 @@ const Questions = () => {
     setData(response);
     setLoading(false);
   }, []);
- 
+
   return (
     <div className="container">
       <h2 className="text-center">Students Questions List</h2>
@@ -23,7 +23,6 @@ const Questions = () => {
             <span class="visually-hidden">Loading...</span>
           </div>
         )}
-         
       </div>
       <br />
       {data?.length === 0 && (
@@ -35,7 +34,9 @@ const Questions = () => {
       {data?.map((item, i) => (
         <div className="border mx-2 p-1 my-5">
           <h4>
-            {i + 1} . {item.name} | {item.rollNumber}
+            {i + 1} . Name : {item.name} <br /> &nbsp; &nbsp;&nbsp; Roll Number
+            : {item.rollNumber} <br /> &nbsp; &nbsp;&nbsp; Date :{" "}
+            {new Date(item.createdAt).toDateString()}
           </h4>
           <>
             {item.Questions.map((x, i) => (
