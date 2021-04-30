@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
           <NavLink to="/" className="navbar-brand" href="#">
             SQL ASSIGNMENT
@@ -23,12 +23,12 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink to="/" className="nav-link " activeClassName="active" aria-current="page" href="#">
+                <NavLink to="/" className="nav-link " activeClassName="active" >
                   QUESTIONS
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/upload" className="nav-link" activeClassName="active" href="#">
+                <NavLink to="/upload" className="nav-link " activeClassName="active" >
                   UPLOAD QUESTIONS
                 </NavLink>
               </li>

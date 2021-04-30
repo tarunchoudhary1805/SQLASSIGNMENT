@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -9,6 +9,7 @@ const Upload = () => {
     email: "",
     rollNumber: "",
   });
+  const [value, setValue] = useState(false);
   const [Questions, setQuestions] = useState([
     { question: "", source: "", solution: "" },
   ]);
@@ -19,24 +20,28 @@ const Upload = () => {
   const submit = async () => {
     const { name, email, rollNumber } = data;
     if (
-      data.name.length >0 &&
-      data.email.length >0 &&
-      data.rollNumber.length >0 &&
+      data.name.length > 0 &&
+      data.email.length > 0 &&
+      data.rollNumber.length > 0 &&
       Questions.length != 0
     ) {
       const payload = { name, email, rollNumber, Questions };
       console.log(payload);
-      let response = await fetch("https://sqlassignmentapi.herokuapp.com/upload", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      })
+      let response = await fetch(
+        "https://sqlassignmentapi.herokuapp.com/upload",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      )
         .then((res) => res.json())
         .catch((err) => console.log(err));
       console.log(response);
       toast(response.message);
+      setValue(true);
     } else {
       toast.error("All fields are required");
     }
@@ -61,7 +66,9 @@ const Upload = () => {
   const handleAddClick = () => {
     setQuestions([...Questions, { question: "", source: "", solution: "" }]);
   };
-  
+  if (value) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className="container p-5">
       <ToastContainer />

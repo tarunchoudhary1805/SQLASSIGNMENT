@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 const Questions = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState();
   useEffect(async () => {
     setLoading(true);
     let response = await fetch(
@@ -11,35 +13,38 @@ const Questions = () => {
     setData(response);
     setLoading(false);
   }, []);
-  console.log(data);
+ 
   return (
     <div className="container">
       <h2 className="text-center">Students Questions List</h2>
       <div className="text-center">
-
-      {loading && (
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      )}
+        {loading && (
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        )}
+         
       </div>
-      <br/>
+      <br />
       {data?.length === 0 && (
         <h4 className="text-center"> No Questions found</h4>
       )}
+      {filter?.map((item) => (
+        <h4>Questions Available : {item.question}</h4>
+      ))}
       {data?.map((item, i) => (
-        <div className="border mx-2 my-5">
+        <div className="border mx-2 p-1 my-5">
           <h4>
             {i + 1} . {item.name} | {item.rollNumber}
           </h4>
           <>
             {item.Questions.map((x, i) => (
               <div className="p-1 border">
-                <p>
+                <h6>
                   Question {i + 1} . {x.question}
-                </p>
+                </h6>
                 <p>Ans.{x.question}</p>
-                <p>Source : {x.source}</p>
+                <h6>Source : {x.source}</h6>
               </div>
             ))}
           </>
