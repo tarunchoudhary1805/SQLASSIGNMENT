@@ -44,7 +44,7 @@ const Questions = () => {
                 <h6>
                   Question {i + 1} . {x.question}
                 </h6>
-                <p>Ans.{x.question}</p>
+                <p>Ans.{x.solution}</p>
                 <h6>Source : {x.source}</h6>
               </div>
             ))}
