@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Upload = () => {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -18,6 +19,7 @@ const Upload = () => {
     setData({ ...data, [name]: value });
   };
   const submit = async () => {
+    setLoading(true);
     const { name, email, rollNumber } = data;
     if (
       data.name.length > 0 &&
@@ -45,6 +47,7 @@ const Upload = () => {
     } else {
       toast.error("All fields are required");
     }
+    setLoading(false);
   };
 
   // handle input change
@@ -193,7 +196,12 @@ const Upload = () => {
           })}
         </div>
         <button onClick={submit} type="button" class="btn btn-primary">
-          Submit
+          Submit{" "}
+          {loading && (
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          )}
         </button>
       </form>
     </div>

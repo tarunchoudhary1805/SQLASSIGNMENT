@@ -11,3 +11,7 @@ body{
 .active{
   color: #c4c4c4;
 }
+
+.word-wrap{
+  word-wrap: break-word;
+}
