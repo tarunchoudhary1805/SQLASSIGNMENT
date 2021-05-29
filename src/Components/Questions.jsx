@@ -30,7 +30,7 @@ const Questions = () => {
       )}
       <button
         type="button"
-        class="btn btn-primary"
+        class="btn btn-primary noprint"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
@@ -38,7 +38,7 @@ const Questions = () => {
       </button>
       {data?.map((item, i) => (
         <div className="border mx-2 p-1 my-5">
-          <h4>
+          <h4 class="noprint">
             {i + 1} .<span className="text-danger"> Name : {item.name}</span>{" "}
             <br /> &nbsp; &nbsp;&nbsp; Roll Number : {item.rollNumber} <br />{" "}
             &nbsp; &nbsp;&nbsp; Date : {new Date(item.createdAt).toDateString()}
@@ -62,7 +62,7 @@ const Questions = () => {
         </div>
       ))}
       {data?.length != 0 && (
-        <button className="btn btn-success " onClick={window.print}>
+        <button className="btn btn-success noprint " onClick={window.print}>
           Print
         </button>
       )}

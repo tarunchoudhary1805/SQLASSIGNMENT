@@ -6,7 +6,7 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid">
-          <NavLink to="/" className="navbar-brand" href="#">
+          <NavLink to="/" className="navbar-brand noprint" href="#">
             SQL ASSIGNMENT
           </NavLink>
           <button
