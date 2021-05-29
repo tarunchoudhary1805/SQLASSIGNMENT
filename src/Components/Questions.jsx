@@ -93,9 +93,9 @@ const Questions = () => {
                   <th>Student Roll Number</th>
                 </thead>
                 <tbody>
-                  {data?.map((item) => (
+                  {data?.map((item,i) => (
                     <tr>
-                      <td>{item.name}</td> 
+                      <td>{i+1} {item.name}</td> 
                       <td>{item.rollNumber}</td>
                     </tr>
                   ))}
